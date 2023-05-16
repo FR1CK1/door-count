@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+hc-sr04.c
+
 lcd.c
 
 main.c
