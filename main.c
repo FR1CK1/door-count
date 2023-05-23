@@ -41,7 +41,7 @@ int main(void)
 	char buffer[16]="";		//Buffer für Display
 	char strline[16] = "";	//string vorbereitet für die Übertragun
 	
-	int iAnzahl = 1;		//Anzahl an Personen im Raum
+	int iAnzahl = 0;		//Anzahl an Personen im Raum
 	float dDistance = 0;	//Entfernung vom Ultraschall (nicht geeicht)
 	float dDistanceCal = -1;
 	int errorCount = 0;
@@ -80,7 +80,7 @@ int main(void)
 	lcd_puts(buffer);
 	
 	while(dDistanceCal < 0){
-		dDistanceCal = distance(8);		
+		dDistanceCal = distance(16);		
 		errorCount++;
 		_delay_ms(50);
 		if (errorCount > 100)
@@ -114,7 +114,7 @@ int main(void)
 	PORTB = 0xff;
 	
 	PORTB = ~(uint8_t)(dDistanceCal*100); // Entfernung in cm ausgeben
-	_delay_ms(5000);
+	_delay_ms(500);
 
 	
 	
@@ -132,7 +132,7 @@ int main(void)
 		
 		//1. Zeile
 		memset(buffer, 0, 16);
-		strncat(buffer,"Baum:",16);
+		strncat(buffer,"Personen:",16);
 		lcd_gotoxy(0,0);
 		lcd_puts(buffer);
 		
